@@ -1,0 +1,63 @@
+****QUESTÃO 1****
+
+inicio	//inicio do algoritmo
+	questoes ← leia("Quantas questões? ") //lendo quantidade de questões
+	respostas ← ['a', 'b', 'c', 'd', 'e', '*'] //criando lista 
+
+	para c ← 1 até questoes faça // laço para que faz o processamento conforme número de questões
+		resultado ← "" //inicializando variavel resultado vazia
+		erro ← falso //inicializando variavel logica erro com valor falso
+
+		imprima("Questão " + c) //imprime o número da questão a ser processada
+
+		para alt ← 1 até 5 faça //laço para que lê os valores das alternativas
+			valor ← leia("Valor lido: ") //leitura do valor
+
+			se valor = 0 faça //desvio condicional se que controla se houve erro na leitura e a questão marcada
+				se resultado <> "" faça //desvio condicional que trata o evento de nenhuma questão marcada
+					erro ← verdadeiro // atribuindo a variavel erro o valor verdadeiro
+				fim se
+				resultado ← respostas[alt] //atribuindo a variavel resultado a letra da resposta marcada
+			fim se
+
+			se erro = verdadeiro ou (alt = 4 e resultado = "") faça //desvio condicional que trata os erros
+				resultado ← respostas[5] // atribuindo o caractere * a variavel resultado
+			fim se
+
+		imprima("Resposta " + resultado) //imprimindo na tela a variavel resultado
+		próximo alt
+
+	proximo c
+fim //fim do algoritmo
+
+
+****QUESTÃO 2****
+
+procedimento iniciais(entradas: lista[], k)
+inicio //inicio do procedimento
+	alfabeto ← ['a', 'b', 'c', 'd', 'e',
+				'f', 'g', 'h', 'i', 'j',
+				'k', 'l', 'm', 'n', 'o',
+				'p', 'q', 'r', 's', 't',
+				'u', 'v', 'w', 'x', 'y', 'z'] //criando a lista com o alfabeto
+
+
+	para qtd ← 1 até tamanho(alfabeto) faça //laço para que cria o controle de quantas vezes a inicial apareceu
+		iniciais[qtd] ← [alfabeto[qtd], 0] //criando uma lista com a letra e quantas vezes apareceu 
+	próximo qtd
+
+	para qtd ← 1 até tamanho(lista) faça //laço para que percorre toda a lista lista
+		para letra ← 1 até tamanho(iniciais) faça //laço para que percorre a lista iniciais
+			se lista[qtd][0] = iniciais[letra][0] faça //desvio condicional que conta a inicial
+				iniciais[letra][1] ← iniciais[letra][1] + 1 //incrementa 1 a inicial sempre que aparece
+			fim se
+		próximo letra
+	próximo qtd
+		
+	para contagem ← 1 até tamanho(iniciais) faça //laço para que percorre todas as iniciais
+		se iniciais[contagem][1] >= k faça //desvio condicional que testa se a inicial aparece mais vezes que k
+			imprima(iniciais[contagem][0]) // imprime a inicial
+		fim se
+	próximo contagem
+fim
+

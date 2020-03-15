@@ -1,0 +1,63 @@
+****QUESTÃO 1****
+
+inicio	
+	questoes ← leia("Quantas questões? ") 
+	respostas ← ['a', 'b', 'c', 'd', 'e', '*']  
+
+	para c ← 1 até questoes faça 
+		resultado ← "" 
+		erro ← falso 
+
+		imprima("Questão " + c) 
+
+		para alt ← 1 até 5 faça
+			valor ← leia("Valor lido: ") 
+
+			se valor = 0 faça 
+				se resultado <> "" faça 
+					erro ← verdadeiro 
+				fim se
+				resultado ← respostas[alt] 
+			fim se
+
+			se erro = verdadeiro ou (alt = 4 e resultado = "") faça 
+				resultado ← respostas[5] 
+			fim se
+		próximo alt
+
+		imprima("Resposta " + resultado) 
+		
+	proximo c
+fim 
+
+
+****QUESTÃO 2****
+
+procedimento iniciais(entradas: lista[], k)
+inicio 
+	alfabeto ← ['a', 'b', 'c', 'd', 'e',
+				'f', 'g', 'h', 'i', 'j',
+				'k', 'l', 'm', 'n', 'o',
+				'p', 'q', 'r', 's', 't',
+				'u', 'v', 'w', 'x', 'y', 'z'] 
+
+
+	para qtd ← 1 até tamanho(alfabeto) faça 
+		iniciais[qtd] ← [alfabeto[qtd], 0]  
+	próximo qtd
+
+	para qtd ← 1 até tamanho(lista) faça 
+		para letra ← 1 até tamanho(iniciais) faça 
+			se lista[qtd][0] = iniciais[letra][0] faça 
+				iniciais[letra][1] ← iniciais[letra][1] + 1 
+			fim se
+		próximo letra
+	próximo qtd
+		
+	para contagem ← 1 até tamanho(iniciais) faça 
+		se iniciais[contagem][1] >= k faça 
+			imprima(iniciais[contagem][0]) 
+		fim se
+	próximo contagem
+fim
+
